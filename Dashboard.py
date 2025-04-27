@@ -38,20 +38,25 @@ fig_line = px.line(df_filtered.groupby("Cancer Type")["Case_Count"].sum().reset_
                    x="Cancer Type", y="Case_Count", title="Cancer Cases by Type")
 st.plotly_chart(fig_line)
 
-# 4. Histogram - Distribution of Cancer Types
-st.subheader("Distribution of Cancer Types")
-fig_hist = px.histogram(
-    df_filtered,
-    x="Cancer Type",
-    color="Gender", 
-    title="Distribution of Different Cancer Types",
-    labels={"Cancer Type": "Type of Cancer"},
-    barmode="group"  
-)
-fig_hist.update_layout(xaxis_title="Cancer Type", yaxis_title="Number of Records")
-fig_hist.update_xaxes(tickangle=-45)  
-st.plotly_chart(fig_hist)
+# 4. Bar Chart - Top 10 Cancer Types
+st.subheader("Top 10 Most Common Cancer Types")
 
+# Group by Cancer Type and sum the cases
+top_cancers = df_filtered.groupby("Cancer Type")["Case_Count"].sum().sort_values(ascending=False).head(10).reset_index()
+
+# Create a bar chart
+fig_bar = px.bar(
+    top_cancers,
+    x="Case_Count",
+    y="Cancer Type",
+    orientation="h",
+    title="Top 10 Cancer Types by Case Count",
+    labels={"Case_Count": "Number of Cases", "Cancer Type": "Type of Cancer"},
+    text_auto=True  
+)
+
+fig_bar.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig_bar)
 
 # 5. Donut Chart for Gender Distribution
 if gender_option == "All":
