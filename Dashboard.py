@@ -90,4 +90,4 @@ st.plotly_chart(fig_avg)
 
 # Footer
 st.markdown("---")
-st.markdown("Developed for DSPLK Coursework | Mohammed Alfar 2025")
+st.markdown("Developed for DSPL Coursework | Mohammed Alfar 2025")
