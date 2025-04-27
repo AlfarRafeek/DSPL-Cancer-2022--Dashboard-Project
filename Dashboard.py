@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Load your Excel data
+# Load the Excel data
 df = pd.read_excel("cancer_data_2020.xlsx")
 
 # Page Title
@@ -38,16 +38,20 @@ fig_line = px.line(df_filtered.groupby("Cancer Type")["Case_Count"].sum().reset_
                    x="Cancer Type", y="Case_Count", title="Cancer Cases by Type")
 st.plotly_chart(fig_line)
 
-# 4. Histogram - Distribution of Cancer Case Counts
-st.subheader("Distribution of Cancer Case Counts")
+# 4. Histogram - Distribution of Cancer Types
+st.subheader("Distribution of Cancer Types")
 fig_hist = px.histogram(
-    df_filtered, 
-    x="Case_Count", 
-    nbins=20, 
-    title="Distribution of Cancer Case Counts",
-    labels={"Case_Count": "Number of Cancer Cases"}
+    df_filtered,
+    x="Cancer Type",
+    color="Gender", 
+    title="Distribution of Different Cancer Types",
+    labels={"Cancer Type": "Type of Cancer"},
+    barmode="group"  
 )
+fig_hist.update_layout(xaxis_title="Cancer Type", yaxis_title="Number of Records")
+fig_hist.update_xaxes(tickangle=-45)  
 st.plotly_chart(fig_hist)
+
 
 # 5. Donut Chart for Gender Distribution
 if gender_option == "All":
