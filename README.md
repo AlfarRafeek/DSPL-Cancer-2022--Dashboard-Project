@@ -5,6 +5,7 @@ The project involves the creation of an interactive dashboard with Streamlit tha
 
 Data
 Source - Sri Lanka NCCP Annual Cancer Report 2020
+
 Information - Cancer cases by type of cancer & gender (Male/Female) 
 
 
