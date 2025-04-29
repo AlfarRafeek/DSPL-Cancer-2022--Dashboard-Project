@@ -18,7 +18,7 @@ st.sidebar.header("Search by Cancer Type")
 cancer_types = df["Cancer Type"].unique()
 selected_type = st.sidebar.selectbox("Select a Cancer Type to Explore:", options=["Show full dashboard"] + list(cancer_types))
 
-# 🔍 If a specific cancer type is selected, show filtered view only
+# If a specific cancer type is selected, show filtered view only
 if selected_type != "Show full dashboard":
     st.subheader(f"Details for: {selected_type}")
     filtered_df = df[df["Cancer Type"] == selected_type]
@@ -109,4 +109,4 @@ st.plotly_chart(fig_avg)
 
 # Footer
 st.markdown("---")
-st.markdown("Developed for DSPL Coursework | Mohammed Alfar 2025")
+st.markdown("Developed for DSPL ICW | Mohammed Alfar 2025")
