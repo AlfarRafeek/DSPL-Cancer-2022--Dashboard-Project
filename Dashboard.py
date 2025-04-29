@@ -13,26 +13,25 @@ st.write("Explore cancer cases by gender and type.")
 st.sidebar.header("Filters")
 gender_option = st.sidebar.selectbox("Select Gender", ("All", "Male", "Female"))
 
-# Sidebar or main area
-st.sidebar.header("🔍 Search by Cancer Type")
+# Sidebar - Dropdown Search by Cancer Type
+st.sidebar.header("Search by Cancer Type")
+cancer_types = df["Cancer Type"].unique()
+selected_type = st.sidebar.selectbox("Select a Cancer Type to Explore:", options=["Show full dashboard"] + list(cancer_types))
 
-# Dropdown selection using unique cancer types
-selected_type = st.sidebar.selectbox("Select a Cancer Type:", df["Cancer Type"].unique())
+# 🔍 If a specific cancer type is selected, show filtered view only
+if selected_type != "Show full dashboard":
+    st.subheader(f"Details for: {selected_type}")
+    filtered_df = df[df["Cancer Type"] == selected_type]
+    st.dataframe(filtered_df)
 
-# Filter the dataset
-filtered_df = df[df["Cancer Type"] == selected_type]
+    fig = px.bar(
+        filtered_df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"],
+                         var_name="Gender", value_name="Cases"),
+        x="Gender", y="Cases", title=f"Gender-wise Cases for {selected_type}", color="Gender"
+    )
+    st.plotly_chart(fig)
 
-# Display filtered results
-st.subheader(f"Cancer Type Selected: {selected_type}")
-st.write(filtered_df)
-
-# Optional: Visualize for the selected cancer type
-fig = px.bar(
-    filtered_df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"], var_name="Gender", value_name="Cases"),
-    x="Gender", y="Cases", title=f"Gender-wise Cases for {selected_type}"
-)
-st.plotly_chart(fig)
-
+    st.stop() 
 
 # Convert wide data to long format
 df_long = df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"],
@@ -61,22 +60,12 @@ st.plotly_chart(fig_line)
 
 # 4. Bar Chart - Top 10 Cancer Types
 st.subheader("Top 10 Most Common Cancer Types")
-
-# Group by Cancer Type and sum the cases
 top_cancers = df_filtered.groupby("Cancer Type")["Case_Count"].sum().sort_values(ascending=False).head(10).reset_index()
-
-# Create a bar chart
-fig_bar = px.bar(
-    top_cancers,
-    x="Case_Count",
-    y="Cancer Type",
-    orientation="h",
-    title="Top 10 Cancer Types by Case Count",
-    labels={"Case_Count": "Number of Cases", "Cancer Type": "Type of Cancer"},
-    text_auto=True  
-)
-
-fig_bar.update_layout(yaxis={'categoryorder':'total ascending'})
+fig_bar = px.bar(top_cancers, x="Case_Count", y="Cancer Type", orientation="h",
+                 title="Top 10 Cancer Types by Case Count",
+                 labels={"Case_Count": "Number of Cases", "Cancer Type": "Type of Cancer"},
+                 text_auto=True)
+fig_bar.update_layout(yaxis={'categoryorder': 'total ascending'})
 st.plotly_chart(fig_bar)
 
 # 5. Donut Chart for Gender Distribution
@@ -106,7 +95,7 @@ fig_grouped = px.bar(df, x="Cancer Type", y=["Male", "Female"],
                      barmode="group")
 st.plotly_chart(fig_grouped)
 
-# 9. Cancer Types with Few Cases (<10 cases)
+# 9. Rare Cancer Types (<10 Cases)
 st.subheader("Rare Cancer Types (Less than 10 cases)")
 rare_cancers = df[(df["Male"] + df["Female"]) < 10]
 fig_rare = px.bar(rare_cancers, x="Cancer Type", y=["Male", "Female"], title="Rare Cancer Types")
