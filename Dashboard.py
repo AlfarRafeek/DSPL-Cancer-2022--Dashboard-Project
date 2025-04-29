@@ -31,7 +31,7 @@ if selected_type != "Show full dashboard":
     )
     st.plotly_chart(fig)
 
-    st.stop() 
+    st.stop()
 
 # Convert wide data to long format
 df_long = df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"],
@@ -109,4 +109,6 @@ st.plotly_chart(fig_avg)
 
 # Footer
 st.markdown("---")
-st.markdown("Developed for DSPL ICW | Mohammed Alfar 2025")
+st.markdown("Developed for DSPL Coursework | Mohammed Alfar 2025")
+
+
