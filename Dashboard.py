@@ -13,6 +13,27 @@ st.write("Explore cancer cases by gender and type.")
 st.sidebar.header("Filters")
 gender_option = st.sidebar.selectbox("Select Gender", ("All", "Male", "Female"))
 
+# Sidebar or main area
+st.sidebar.header("🔍 Search by Cancer Type")
+
+# Dropdown selection using unique cancer types
+selected_type = st.sidebar.selectbox("Select a Cancer Type:", df["Cancer Type"].unique())
+
+# Filter the dataset
+filtered_df = df[df["Cancer Type"] == selected_type]
+
+# Display filtered results
+st.subheader(f"Cancer Type Selected: {selected_type}")
+st.write(filtered_df)
+
+# Optional: Visualize for the selected cancer type
+fig = px.bar(
+    filtered_df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"], var_name="Gender", value_name="Cases"),
+    x="Gender", y="Cases", title=f"Gender-wise Cases for {selected_type}"
+)
+st.plotly_chart(fig)
+
+
 # Convert wide data to long format
 df_long = df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"],
                   var_name="Gender", value_name="Case_Count")
