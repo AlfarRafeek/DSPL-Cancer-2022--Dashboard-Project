@@ -13,6 +13,18 @@ st.write("Explore cancer cases by gender and type.")
 st.sidebar.header("Filters")
 gender_option = st.sidebar.selectbox("Select Gender", ("All", "Male", "Female"))
 
+# Sidebar Search
+st.sidebar.header("Search Cancer Type")
+search_term = st.sidebar.text_input("Enter cancer type to search:")
+
+if search_term:
+    df_search = df[df["Cancer Type"].str.contains(search_term, case=False, na=False)]
+    st.subheader(f"Search Results for '{search_term}':")
+    st.dataframe(df_search)
+else:
+    # Continue normal dashboard (Metric, Charts etc.)
+    st.title("Sri Lanka Cancer Incidence Dashboard (2020)")
+
 # Convert wide data to long format
 df_long = df.melt(id_vars="Cancer Type", value_vars=["Male", "Female"],
                   var_name="Gender", value_name="Case_Count")
