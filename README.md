@@ -5,9 +5,12 @@ This project comprises an interactive web-based dashboard created using **Stream
 
 ## Data
 
-Source - National Cancer Control Programme (NCCP) – Sri Lanka
+Source - National Cancer Control Programme (NCCP), Sri Lanka
+
 Report - Annual Cancer Incidence Report 2020
+
 Description - Total number of cancer cases by **cancer type** and **gender (Male/Female)**
+
 Method - Data was collected as manually entered from tables 15-31 of the NCCP report, as there was no available API or machine-readable format. 
 
 
