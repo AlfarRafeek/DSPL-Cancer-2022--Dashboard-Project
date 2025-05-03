@@ -6,7 +6,7 @@ import plotly.express as px
 df = pd.read_excel("cancer_data_2020.xlsx")
 
 # Page Title
-st.title("Sri Lanka Cancer Incidence Dashboard (2020)")
+st.title(" :cancer: Sri Lanka Cancer Incidence Dashboard (2020)")
 st.write("Explore cancer cases by gender and type.")
 
 # Sidebar - Filter by Gender
