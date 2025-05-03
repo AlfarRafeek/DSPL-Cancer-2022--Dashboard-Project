@@ -5,13 +5,13 @@ This project comprises an interactive web-based dashboard created using **Stream
 
 ## Data
 
-Source - National Cancer Control Programme (NCCP), Sri Lanka
+**Source** - National Cancer Control Programme (NCCP), Sri Lanka
 
-Report - Annual Cancer Incidence Report 2020
+**Report** - Annual Cancer Incidence Report 2020
 
-Description - Total number of cancer cases by **cancer type** and **gender (Male/Female)**
+**Description** - Total number of cancer cases by **cancer type** and **gender (Male/Female)**
 
-Method - Data was collected as manually entered from tables 15-31 of the NCCP report, as there was no available API or machine-readable format. 
+**Method** - Data was collected as manually entered from tables 15-31 of the NCCP report, as there was no available API or machine-readable format. 
 
 
 ## Visualizations 
@@ -51,7 +51,6 @@ Openpyxl - reading and writing excel file
 
 ## Testing
 
-
 - Functional testing and user-centric testing completed
 - Full test plan and test log available in project documentation
 
@@ -59,7 +58,6 @@ Openpyxl - reading and writing excel file
 
 
 ##  Author
-
 
 *Mohammed Alfar*  
 University of Westminster | Data Science Project Lifecycle – 2025
