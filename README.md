@@ -38,6 +38,13 @@ This project comprises an interactive web-based dashboard created using **Stream
 10.Average cases per type of cancer (Scatter plot) 
 
 
+## Deployment
+
+
+Hosted on - [Streamlit Cloud](https://share.streamlit.io/)  
+Access - [https://dspl-cancer-2022--dashboard-project-mw87kigizvxncznqhfcfmj.streamlit.app/]
+
+
 ## Key technologies 
 
 Python - main programming language
