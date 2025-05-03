@@ -4,6 +4,7 @@ Streamlit Dashboard for DSPL Individual Coursework 2025
 This project comprises an interactive web-based dashboard created using **Streamlit** to visualize and analyze cancer incidence data for **Sri Lanka (2020)**. It forms part of the **Data Science Project Lifecycle (DSPL)** individual coursework.
 
 
+
 ## Data
 
 **Source** - National Cancer Control Programme (NCCP), Sri Lanka
@@ -13,6 +14,7 @@ This project comprises an interactive web-based dashboard created using **Stream
 **Description** - Total number of cancer cases by **cancer type** and **gender (Male/Female)**
 
 **Method** - Data was collected as manually entered from tables 15-31 of the NCCP report, as there was no available API or machine-readable format. 
+
 
 
 ## Visualizations 
@@ -38,11 +40,12 @@ This project comprises an interactive web-based dashboard created using **Stream
 10.Average cases per type of cancer (Scatter plot) 
 
 
-## Deployment
 
+## Deployment
 
 Hosted on - [Streamlit Cloud](https://share.streamlit.io/)  
 Access - [https://dspl-cancer-2022--dashboard-project-mw87kigizvxncznqhfcfmj.streamlit.app/]
+
 
 
 ## Key technologies 
@@ -58,11 +61,13 @@ Plotly - interactive visualization
 Openpyxl - reading and writing excel file
 
 
+
 ## Testing
 
 - Functional testing and user-centric testing completed
 - Full test plan and test log available in project documentation
   
+
 
 ##  Author
 
