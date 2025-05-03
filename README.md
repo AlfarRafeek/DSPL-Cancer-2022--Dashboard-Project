@@ -1,5 +1,5 @@
 # DSPL-Cancer-2022-Dashboard-Project
-Streamlit Dashboard for DSPL Coursework 2025
+Streamlit Dashboard for DSPL Individual Coursework 2025
 
 The project involves the creation of an interactive dashboard with Streamlit that analyses Sri Lanka's cancer incidence in 2020. 
 
